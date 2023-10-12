@@ -76,6 +76,7 @@ const DrawerContent = ({navigation}) => {
           <CustomSpacer height={getScreenHeight(4)} />
 
           <CustomDropDown title={localization.documentation}>
+            <CustomSpacer height={getScreenHeight(1)} />
             <NotFound />
           </CustomDropDown>
 
@@ -84,6 +85,7 @@ const DrawerContent = ({navigation}) => {
           <CustomSpacer />
 
           <CustomDropDown title={localization.reports}>
+            <CustomSpacer height={getScreenHeight(1)} />
             <NotFound />
           </CustomDropDown>
 
@@ -92,6 +94,7 @@ const DrawerContent = ({navigation}) => {
           <CustomSpacer />
 
           <CustomDropDown title={localization.needHelp}>
+            <CustomSpacer height={getScreenHeight(1)} />
             <NotFound />
           </CustomDropDown>
 

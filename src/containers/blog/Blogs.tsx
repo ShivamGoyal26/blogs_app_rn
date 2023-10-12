@@ -1,6 +1,6 @@
 import {useTheme} from '@react-navigation/native';
 import React, {useEffect, useMemo} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {Platform, StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
@@ -16,7 +16,9 @@ const Blogs = ({navigation}) => {
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   useEffect(() => {
-    StatusBar.setBackgroundColor(colors.primary);
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor(colors.primary);
+    }
   }, []);
 
   return (

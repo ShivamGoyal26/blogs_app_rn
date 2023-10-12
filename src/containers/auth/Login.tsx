@@ -1,6 +1,6 @@
 import {useTheme} from '@react-navigation/native';
 import React, {useEffect, useMemo} from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {Platform, StatusBar, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
@@ -11,6 +11,7 @@ import {getScreenHeight} from '../../utils/commonServices';
 import {resetRoot} from '../../utils/routerServices';
 import routes from '../../constants/routes';
 import {CustomButton, CustomSpacer} from '../../components';
+import images from '../../constants/images';
 
 const Login = () => {
   const theme = useTheme();
@@ -18,8 +19,10 @@ const Login = () => {
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   useEffect(() => {
-    StatusBar.setBackgroundColor(colors.background);
-    StatusBar.setBarStyle('dark-content');
+    if (Platform.OS === 'android') {
+      StatusBar.setBackgroundColor(colors.background);
+      StatusBar.setBarStyle('dark-content');
+    }
   }, []);
 
   const onGetStartedPress = () => {
