@@ -133,14 +133,14 @@ const createStyles = (theme: any) =>
       height: '90%',
       fontFamily: fonts.regular,
       fontSize: getScreenHeight(1.6),
-      color: theme.black,
+      color: theme.textColor,
       backgroundColor: theme.white,
     },
     mainContainer: {
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'space-between',
-      borderColor: theme.borderColor,
+      borderColor: theme.textColor,
       borderWidth: getScreenHeight(0.2),
       borderRadius: getScreenHeight(1),
       backgroundColor: theme.white,
@@ -149,7 +149,7 @@ const createStyles = (theme: any) =>
       flex: 1,
     },
     label: {
-      color: theme.black,
+      color: theme.grey,
       fontSize: getScreenHeight(1.6),
       fontFamily: fonts.medium,
       marginLeft: Platform.OS === 'android' ? getScreenHeight(0.5) : 0,
@@ -157,7 +157,7 @@ const createStyles = (theme: any) =>
     },
     input: {
       fontSize: getScreenHeight(1.5),
-      color: theme.black,
+      color: theme.textColor,
     },
     iconContanier: {
       width: '10%',

@@ -15,21 +15,25 @@ export type Colors = {
 
 export const platte = {
   white: '#ffffff',
+  lightRose: '#f1807e',
+  lightGrey: '#808080',
+  black: '#000000',
+  lightBlue: '#ADD8E6',
 };
 
 export const DarkTheme = {
   dark: true,
   colors: {
-    backgroundColor: '#000000',
+    backgroundColor: platte.black,
     textColor: platte.white,
-    primary: '#ADD8E6',
-    background: '#000000',
-    card: '#000000',
-    text: '#000000',
-    notification: '#000000',
-    border: '#000000',
-    grey: '#808080',
-    error: '#f1807e',
+    primary: platte.lightGrey,
+    background: platte.black,
+    card: platte.black,
+    text: platte.black,
+    notification: platte.black,
+    border: platte.black,
+    grey: platte.lightGrey,
+    error: platte.lightRose,
   },
 };
 
@@ -37,14 +41,14 @@ export const LightTheme = {
   dark: false,
   colors: {
     backgroundColor: platte.white,
-    textColor: '#000000',
-    primary: '#ADD8E6',
-    background: '#ffffff',
-    card: '#ffffff',
-    text: '#ffffff',
-    notification: '#ffffff',
-    border: '#ffffff',
-    grey: '#808080',
-    error: '#f1807e',
+    textColor: platte.black,
+    primary: platte.lightBlue,
+    background: platte.white,
+    card: platte.white,
+    text: platte.white,
+    notification: platte.white,
+    border: platte.white,
+    grey: platte.lightGrey,
+    error: platte.lightRose,
   },
 };

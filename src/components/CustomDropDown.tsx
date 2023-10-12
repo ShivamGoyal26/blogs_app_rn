@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo, useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 // Files
@@ -38,12 +38,14 @@ const CustomDropDown = ({title, children, disabled}: CustomDropDownProps) => {
         </Text>
         {open ? (
           <FastImage
+            tintColor={colors.textColor}
             resizeMode="contain"
             style={styles.icon}
             source={images.arrowup}
           />
         ) : (
           <FastImage
+            tintColor={colors.textColor}
             resizeMode="contain"
             style={styles.icon}
             source={images.arrowdown}
@@ -69,8 +71,8 @@ const createStyles = (theme: Colors) =>
       textTransform: 'uppercase',
     },
     icon: {
-      height: getScreenHeight(2.5),
-      width: getScreenHeight(2.5),
+      height: getScreenHeight(2),
+      width: getScreenHeight(2),
     },
   });
 
