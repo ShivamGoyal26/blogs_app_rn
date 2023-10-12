@@ -20,3 +20,7 @@ export const getScreenHeight = (value: any) => {
     return screenHeight;
   }
 };
+
+export const generateUserID = () => {
+  return Math.floor(Math.random() * 9) + 1;
+};

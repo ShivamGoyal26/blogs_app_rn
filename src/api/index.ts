@@ -1,0 +1,112 @@
+import {Vibration} from 'react-native';
+import axios from 'axios';
+import {showMessage} from 'react-native-flash-message';
+import apiTypes from './apiTypes';
+import {store} from '../redux/store';
+import {setLoading} from '../redux/common';
+
+// Files
+
+const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
+  const instance = axios.create({
+    baseURL: 'https://jsonplaceholder.typicode.com',
+  });
+
+  const {CancelToken} = axios;
+  const source = CancelToken.source();
+
+  instance.interceptors.request.use(
+    (request: any) => {
+      request.data = data;
+      request.params = params;
+      request.cancelToken = source.token;
+      if (extraAdditionToHeader) {
+        request.headers = {...request.headers, ...extraAdditionToHeader};
+      }
+      if (hasImage !== 0) {
+        request.headers['Content-Type'] = 'multipart/form-data';
+      } else {
+        request.headers['Content-Type'] = 'application/json';
+      }
+      return request;
+    },
+    error => {
+      throw new Error(error.message);
+    },
+  );
+
+  instance.interceptors.response.use(
+    function (response) {
+      return response;
+    },
+    function (error) {
+      throw new Error(error.message);
+    },
+  );
+
+  return instance;
+};
+
+const apiCall = async ({
+  hasImage = 0,
+  type,
+  url,
+  data,
+  params = {},
+  enableLoader = false,
+  extraAdditionToHeader = null,
+}: any) => {
+  if (enableLoader) {
+    store.dispatch(setLoading(true));
+  }
+  const instance = getInstance({
+    hasImage,
+    data,
+    params,
+    extraAdditionToHeader,
+  });
+  try {
+    switch (type) {
+      case apiTypes.post: {
+        let response = await instance.post(url);
+        return response?.data;
+      }
+      case apiTypes.patch: {
+        let response = await instance.patch(url);
+        return response?.data;
+      }
+      case apiTypes.put: {
+        let response = await instance.put(url);
+        return response?.data;
+      }
+
+      case apiTypes.delete: {
+        let response = await instance.delete(url);
+        return response?.data;
+      }
+
+      case apiTypes.get: {
+        let response = await instance.get(url);
+        return response?.data;
+      }
+
+      default: {
+        let response = await instance.get(url);
+        return response?.data;
+      }
+    }
+  } catch (error: any) {
+    console.log('Error in catch', error.message);
+    if (error.message !== 'Cancelled') {
+      Vibration.vibrate();
+      showMessage({
+        message: error.message,
+        type: 'danger',
+      });
+    }
+  } finally {
+    store.dispatch(setLoading(false));
+  }
+};
+
+export default apiCall;

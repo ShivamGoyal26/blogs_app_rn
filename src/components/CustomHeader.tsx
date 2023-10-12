@@ -48,7 +48,9 @@ const CustomHeader = ({
       ) : (
         <View style={styles.iconContainer} />
       )}
-      <Text style={styles.title}>{title}</Text>
+      <Text numberOfLines={2} style={styles.title}>
+        {title}
+      </Text>
       {rightIcon ? (
         <TouchableOpacity
           disabled={!rightAction}
@@ -81,6 +83,9 @@ const createStyles = (theme: Colors) =>
       fontFamily: fonts.medium,
       fontSize: getScreenHeight(1.8),
       color: theme.textColor,
+      textTransform: 'capitalize',
+      flex: 1,
+      textAlign: 'center',
     },
     iconContainer: {
       width: '10%',

@@ -1,5 +1,10 @@
 import React, {useMemo} from 'react';
-import {StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 // Files
@@ -7,6 +12,7 @@ import {getScreenHeight} from '../utils/commonServices';
 import {Colors} from '../theme';
 import fonts from '../constants/fonts';
 import FastImage from 'react-native-fast-image';
+import {useSelector} from 'react-redux';
 
 type CustomButtonProps = {
   title: string;
@@ -28,10 +34,11 @@ const CustomButton = ({
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const loading = useSelector((state: any) => state.common.loading);
 
   return (
     <TouchableOpacity
-      disabled={disabled}
+      disabled={disabled || loading}
       onPress={action}
       activeOpacity={0.7}
       style={[
@@ -40,15 +47,21 @@ const CustomButton = ({
           height: height ? height : getScreenHeight(6),
         },
       ]}>
-      {icon ? (
-        <FastImage
-          tintColor={iconColor ? iconColor : theme.colors.textColor}
-          style={styles.icon}
-          source={icon}
-          resizeMode="contain"
-        />
-      ) : null}
-      <Text style={styles.title}>{title}</Text>
+      {loading ? (
+        <ActivityIndicator color={colors.textColor} size={'small'} />
+      ) : (
+        <>
+          {icon ? (
+            <FastImage
+              tintColor={iconColor ? iconColor : theme.colors.textColor}
+              style={styles.icon}
+              source={icon}
+              resizeMode="contain"
+            />
+          ) : null}
+          <Text style={styles.title}>{title}</Text>
+        </>
+      )}
     </TouchableOpacity>
   );
 };

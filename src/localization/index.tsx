@@ -16,4 +16,8 @@ export default {
   noDataFound: 'No Data Found',
   reports: 'Reports',
   needHelp: 'Need Help?',
+  somethingWentWrong: 'Something went wrong',
+  edit: 'Edit',
+  delete: 'Delete',
+  logout: 'Logout',
 };

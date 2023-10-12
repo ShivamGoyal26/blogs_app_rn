@@ -5,7 +5,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
 import {Colors} from '../../theme';
-import localization from '../../localization';
 import fonts from '../../constants/fonts';
 import {getScreenHeight} from '../../utils/commonServices';
 

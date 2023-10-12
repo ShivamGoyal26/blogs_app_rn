@@ -8,6 +8,7 @@ export type Colors = {
   notification: string;
   border: string;
   grey: string;
+  error: string;
 };
 
 export const DarkTheme = {
@@ -22,6 +23,7 @@ export const DarkTheme = {
     notification: '#000000',
     border: '#000000',
     grey: '#808080',
+    error: '#f1807e',
   },
 };
 
@@ -37,5 +39,6 @@ export const LightTheme = {
     notification: '#ffffff',
     border: '#ffffff',
     grey: '#808080',
+    error: '#f1807e',
   },
 };

@@ -18,9 +18,13 @@ import fonts from '../constants/fonts';
 import {getScreenHeight} from '../utils/commonServices';
 import dashboardRoutes from '../constants/dashboardRoutes';
 import blogRoutes from '../constants/blogRoutes';
+import images from '../constants/images';
+import {useDispatch} from 'react-redux';
+import {signOutThunk} from '../redux/auth';
 
 const DrawerContent = ({navigation}) => {
   const theme = useTheme();
+  const dispatch = useDispatch();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
 
@@ -99,6 +103,12 @@ const DrawerContent = ({navigation}) => {
           </CustomDropDown>
 
           <CustomSpacer height={getScreenHeight(4)} />
+          <CustomDrawerItem
+            action={() => dispatch<any>(signOutThunk())}
+            icon={images.logout}
+            title={localization.logout}
+          />
+          <CustomSpacer />
         </View>
       </DrawerContentScrollView>
     </View>

@@ -11,11 +11,13 @@ import fonts from '../../constants/fonts';
 import CustomSpacer from '../CustomSpacer';
 import CustomButton from '../CustomButton';
 import images from '../../constants/images';
+import {useSelector} from 'react-redux';
 
 const ProfileItem = () => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const userData = useSelector((state: any) => state.auth.userData);
 
   return (
     <View style={styles.screen}>
@@ -23,7 +25,9 @@ const ProfileItem = () => {
         <FastImage source={images.profile} style={styles.image} />
       </View>
       <Text style={styles.title}>{localization.hello}</Text>
-      <Text style={styles.subtitle}>{'Alice Simon'}</Text>
+      <Text numberOfLines={1} style={styles.subtitle}>
+        {userData?.name}
+      </Text>
       <CustomSpacer />
 
       <View style={styles.buttonContainer}>

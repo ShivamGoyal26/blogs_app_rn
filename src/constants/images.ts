@@ -9,4 +9,7 @@ export default {
   profile: require('../assets/images/profile.jpeg'),
   arrowdown: require('../assets/images/arrowdown.png'),
   arrowup: require('../assets/images/arrowup.png'),
+  airplane: require('../assets/images/airplane.jpeg'),
+  logout: require('../assets/images/logout.png'),
+  logo: require('../assets/images/logo.jpeg'),
 };
