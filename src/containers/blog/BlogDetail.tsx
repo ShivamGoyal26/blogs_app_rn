@@ -8,8 +8,10 @@ import {Colors} from '../../theme';
 import localization from '../../localization';
 import fonts from '../../constants/fonts';
 import {getScreenHeight} from '../../utils/commonServices';
+import {CustomHeader} from '../../components';
+import images from '../../constants/images';
 
-const BlogDetail = () => {
+const BlogDetail = ({navigation}) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -17,7 +19,11 @@ const BlogDetail = () => {
   return (
     <SafeAreaView style={styles.safe}>
       <View style={styles.screen}>
-        <Text style={styles.title}>{'Blog Detail'} </Text>
+        <CustomHeader
+          title="Blog Detail"
+          rightIcon={images.drawer}
+          rightAction={() => navigation.openDrawer()}
+        />
       </View>
     </SafeAreaView>
   );

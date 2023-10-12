@@ -1,6 +1,6 @@
 import {useTheme} from '@react-navigation/native';
-import React, {useMemo} from 'react';
-import {StyleSheet, View} from 'react-native';
+import React, {useEffect, useMemo} from 'react';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
@@ -14,6 +14,10 @@ const Blogs = ({navigation}) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
+
+  useEffect(() => {
+    StatusBar.setBackgroundColor(colors.primary);
+  }, []);
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>

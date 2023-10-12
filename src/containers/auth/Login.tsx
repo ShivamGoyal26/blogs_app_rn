@@ -1,6 +1,6 @@
 import {useTheme} from '@react-navigation/native';
-import React, {useMemo} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useEffect, useMemo} from 'react';
+import {StatusBar, StyleSheet, Text, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
@@ -16,6 +16,11 @@ const Login = () => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
+
+  useEffect(() => {
+    StatusBar.setBackgroundColor(colors.background);
+    StatusBar.setBarStyle('dark-content');
+  }, []);
 
   const onGetStartedPress = () => {
     resetRoot(routes.DRAWER_STACK);
