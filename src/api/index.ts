@@ -1,15 +1,18 @@
 import {Vibration} from 'react-native';
 import axios from 'axios';
 import {showMessage} from 'react-native-flash-message';
+import Config from 'react-native-config';
+
+// Files
 import apiTypes from './apiTypes';
 import {store} from '../redux/store';
 import {setLoading} from '../redux/common';
 
-// Files
-
 const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
+  console.log(Config.API_URL);
+
   const instance = axios.create({
-    baseURL: 'https://jsonplaceholder.typicode.com',
+    baseURL: Config.API_URL,
   });
 
   const {CancelToken} = axios;
@@ -47,7 +50,7 @@ const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
   return instance;
 };
 
-const apiCall = async ({
+const api = async ({
   hasImage = 0,
   type,
   url,
@@ -109,4 +112,4 @@ const apiCall = async ({
   }
 };
 
-export default apiCall;
+export default api;

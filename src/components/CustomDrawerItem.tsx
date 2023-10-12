@@ -11,23 +11,44 @@ import fonts from '../constants/fonts';
 type CustomDrawerItemProps = {
   title: string;
   icon?: any;
-  action?: () => void;
+  action?: any;
+  selected?: string;
+  id?: string;
 };
 
-const CustomDrawerItem = ({title, icon, action}: CustomDrawerItemProps) => {
+const CustomDrawerItem = ({
+  title,
+  icon,
+  action,
+  id,
+  selected,
+}: CustomDrawerItemProps) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
-    <TouchableOpacity onPress={action} style={styles.item}>
+    <TouchableOpacity
+      onPress={action}
+      style={[
+        styles.item,
+        {backgroundColor: selected === id ? colors.primary : colors.background},
+      ]}>
       <FastImage
-        tintColor={theme.colors.grey}
+        tintColor={selected === id ? colors.textColor : theme.colors.grey}
         resizeMode="contain"
         style={styles.icon}
         source={icon}
       />
-      <Text style={styles.title}>{title}</Text>
+      <Text
+        style={[
+          styles.title,
+          {
+            color: selected === id ? colors.textColor : colors.grey,
+          },
+        ]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -38,6 +59,8 @@ const createStyles = (theme: Colors) =>
       height: getScreenHeight(6),
       flexDirection: 'row',
       alignItems: 'center',
+      paddingHorizontal: getScreenHeight(1),
+      borderRadius: getScreenHeight(1),
     },
     title: {
       fontFamily: fonts.regular,

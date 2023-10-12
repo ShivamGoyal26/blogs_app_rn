@@ -3,12 +3,11 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // Files
 import routes from '../constants/routes';
-import Login from '../containers/auth/Login';
 import DrawerStack from './DrawerStack';
 import CustomLoadingModal from '../components/CustomLoadingModal';
 import {spinnerRef} from '../utils/SpinnerRef';
-import BlogDetail from '../containers/blog/BlogDetail';
 import AuthStack from './AuthStack';
+import AuthLoading from '../containers/authLoading';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,9 +16,9 @@ const MainStack = () => {
     <>
       <CustomLoadingModal ref={spinnerRef} />
       <Stack.Navigator
-        initialRouteName={routes.SPLASH}
+        initialRouteName={routes.AUTH_LOADING}
         screenOptions={{headerShown: false}}>
-        {/* <Stack.Screen name={routes.SPLASH} component={Splash} /> */}
+        <Stack.Screen name={routes.AUTH_LOADING} component={AuthLoading} />
         <Stack.Screen name={routes.AUTH_STACK} component={AuthStack} />
         <Stack.Screen
           options={{

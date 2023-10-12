@@ -1,6 +1,6 @@
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {useTheme} from '@react-navigation/native';
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 
 // Files
@@ -27,8 +27,10 @@ const DrawerContent = ({navigation}) => {
   const dispatch = useDispatch();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const [selected, setSelected] = useState('Dashboard#1');
 
   const onDrawerItemPress = (item: any) => {
+    setSelected(item.id);
     if (item.route) {
       return navigation.navigate(item.route);
     }
@@ -48,14 +50,18 @@ const DrawerContent = ({navigation}) => {
 
         <View style={styles.content}>
           {/* DASHBOARD */}
+
           <Text style={styles.title}>{localization.dashboards}</Text>
-          {dashboardRoutes.map((item, key) => {
+          <CustomSpacer height={getScreenHeight(1)} />
+          {dashboardRoutes.map(item => {
             return (
               <CustomDrawerItem
+                selected={selected}
                 action={() => onDrawerItemPress(item)}
-                key={key}
+                key={item.id}
                 icon={item.icon}
                 title={item.title}
+                id={item.id}
               />
             );
           })}
@@ -64,11 +70,14 @@ const DrawerContent = ({navigation}) => {
           <CustomSpacer height={getScreenHeight(4)} />
 
           <Text style={styles.title}>{localization.blogs}</Text>
-          {blogRoutes.map((item, key) => {
+          <CustomSpacer height={getScreenHeight(1)} />
+          {blogRoutes.map(item => {
             return (
               <CustomDrawerItem
+                selected={selected}
                 action={() => onDrawerItemPress(item)}
-                key={key}
+                key={item.id}
+                id={item.id}
                 icon={item.icon}
                 title={item.title}
               />
@@ -106,6 +115,7 @@ const DrawerContent = ({navigation}) => {
           <CustomDrawerItem
             action={() => dispatch<any>(signOutThunk())}
             icon={images.logout}
+            id={'logout'}
             title={localization.logout}
           />
           <CustomSpacer />

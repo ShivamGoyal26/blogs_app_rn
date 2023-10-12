@@ -6,6 +6,7 @@ const routes = {
   PROFILE_OVERVIEW: 'ProfileOverview',
   SPLASH: 'Splash',
   AUTH_STACK: 'AuthStack',
+  AUTH_LOADING: 'AuthLoading',
 };
 
 export default routes;

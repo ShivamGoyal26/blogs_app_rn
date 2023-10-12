@@ -41,6 +41,7 @@ export const getUserThunk = () => {
     if (res) {
       resetRoot(routes.DRAWER_STACK);
       dispatch(setUserData(res));
+      dispatch(setIsLoggedIn(true));
     }
   };
 };

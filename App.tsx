@@ -1,6 +1,6 @@
 import React from 'react';
-import {NavigationContainer, useTheme} from '@react-navigation/native';
-import {StyleSheet, useColorScheme} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {ActivityIndicator, StyleSheet, useColorScheme} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Provider} from 'react-redux';

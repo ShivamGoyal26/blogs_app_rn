@@ -1,9 +1,9 @@
-import apiCall from '../../api';
+import api from '../../api';
 import apiTypes from '../../api/apiTypes';
 import endPoints from '../../api/endPoints';
 
 export const getAllUserPosts = async (userId: any) => {
-  const res = await apiCall({
+  const res = await api({
     enableLoader: true,
     type: apiTypes.get,
     url: `${endPoints.GET_USER}/${userId}/posts`,
@@ -12,7 +12,7 @@ export const getAllUserPosts = async (userId: any) => {
 };
 
 export const getPostDetail = async (postId: any) => {
-  const res = await apiCall({
+  const res = await api({
     enableLoader: true,
     type: apiTypes.get,
     url: `${endPoints.GET_USER}/app/posts/${postId}`,
