@@ -12,4 +12,5 @@ export default {
   airplane: require('../assets/images/airplane.jpeg'),
   logout: require('../assets/images/logout.png'),
   logo: require('../assets/images/logo.jpeg'),
+  back: require('../assets/images/back.png'),
 };

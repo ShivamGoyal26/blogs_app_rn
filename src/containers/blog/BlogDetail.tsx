@@ -1,9 +1,7 @@
-import {useTheme} from '@react-navigation/native';
-import React, {useEffect, useMemo, useState} from 'react';
+import {RouteProp, useTheme} from '@react-navigation/native';
+import React, {useMemo} from 'react';
 import {
-  Platform,
   ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -19,27 +17,36 @@ import {CustomHeader, CustomSpacer} from '../../components';
 import images from '../../constants/images';
 import FastImage from 'react-native-fast-image';
 import localization from '../../localization';
+import {goBack, navigate} from '../../utils/routerServices';
+import routes from '../../constants/routes';
 
-const BlogDetail = ({navigation, route}) => {
+type RootStackParamList = {
+  BlogDetail: {
+    item: {id: number; title: string; body: string};
+  };
+};
+
+type BlogDetailProps = {
+  route: RouteProp<RootStackParamList, 'BlogDetail'>;
+};
+
+const BlogDetail: React.FC<BlogDetailProps> = ({route}) => {
   const theme = useTheme();
   const {colors} = theme;
-  const title = route.params.title;
-  const body = route.params.body;
+  const item = route.params.item;
   const styles = useMemo(() => createStyles(colors), [colors]);
 
-  useEffect(() => {
-    if (Platform.OS === 'android') {
-      StatusBar.setBackgroundColor(colors.primary);
-    }
-  }, []);
+  const onEditButtonPress = () => {
+    navigate(routes.EDIT_BLOG, {item: item});
+  };
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>
       <View style={styles.screen}>
         <CustomHeader
-          title={title}
-          rightIcon={images.drawer}
-          rightAction={() => navigation.openDrawer()}
+          leftIcon={images.back}
+          leftAction={goBack}
+          title={item.title}
         />
         <ScrollView
           bounces={false}
@@ -48,15 +55,15 @@ const BlogDetail = ({navigation, route}) => {
           <FastImage source={images.airplane} style={styles.image} />
           <CustomSpacer />
           <View style={styles.content}>
-            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.title}>{item.title}</Text>
             <CustomSpacer height={getScreenHeight(1)} />
 
-            <Text style={styles.subtitle}>{body}</Text>
+            <Text style={styles.subtitle}>{item.body}</Text>
 
             <CustomSpacer height={getScreenHeight(4)} />
 
             <View style={styles.row}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onEditButtonPress}>
                 <Text style={styles.title}>{localization.edit}</Text>
               </TouchableOpacity>
               <TouchableOpacity>

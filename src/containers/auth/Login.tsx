@@ -25,7 +25,7 @@ const Login = () => {
       StatusBar.setBackgroundColor(colors.background);
       StatusBar.setBarStyle('dark-content');
     }
-  }, []);
+  }, [colors?.background]);
 
   const onGetStartedPress = () => {
     dispatch<any>(getUserThunk());

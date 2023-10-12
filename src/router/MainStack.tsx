@@ -8,6 +8,8 @@ import CustomLoadingModal from '../components/CustomLoadingModal';
 import {spinnerRef} from '../utils/SpinnerRef';
 import AuthStack from './AuthStack';
 import AuthLoading from '../containers/authLoading';
+import BlogDetail from '../containers/blog/BlogDetail';
+import EditBlog from '../containers/blog/EditBlog';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +22,7 @@ const MainStack = () => {
         screenOptions={{headerShown: false}}>
         <Stack.Screen name={routes.AUTH_LOADING} component={AuthLoading} />
         <Stack.Screen name={routes.AUTH_STACK} component={AuthStack} />
+
         <Stack.Screen
           options={{
             presentation: 'fullScreenModal',
@@ -27,6 +30,24 @@ const MainStack = () => {
           }}
           name={routes.DRAWER_STACK}
           component={DrawerStack}
+        />
+
+        <Stack.Screen
+          options={{
+            presentation: 'fullScreenModal',
+            animation: 'fade',
+          }}
+          name={routes.BLOG_DETAIL}
+          component={BlogDetail}
+        />
+
+        <Stack.Screen
+          options={{
+            presentation: 'fullScreenModal',
+            animation: 'fade',
+          }}
+          name={routes.EDIT_BLOG}
+          component={EditBlog}
         />
       </Stack.Navigator>
     </>

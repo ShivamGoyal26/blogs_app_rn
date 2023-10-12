@@ -1,6 +1,6 @@
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {useTheme} from '@react-navigation/native';
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {Alert, StyleSheet, Text, View} from 'react-native';
 
 // Files
@@ -30,8 +30,8 @@ const DrawerContent = ({navigation}) => {
   const [selected, setSelected] = useState('Dashboard#1');
 
   const onDrawerItemPress = (item: any) => {
-    setSelected(item.id);
     if (item.route) {
+      setSelected(item.id);
       return navigation.navigate(item.route);
     }
     Alert.alert('Working');

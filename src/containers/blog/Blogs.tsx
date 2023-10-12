@@ -1,4 +1,4 @@
-import {useTheme} from '@react-navigation/native';
+import {NavigationProp, useTheme} from '@react-navigation/native';
 import React, {useCallback, useEffect, useMemo} from 'react';
 import {
   Alert,
@@ -21,7 +21,11 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {getUserPostsThunk} from '../../redux/common';
 import PostItem from '../../components/blog/PostItem';
 
-const Blogs = ({navigation}) => {
+type BlogsProps = {
+  navigation: NavigationProp<{}>; // Replace {} with the correct route param type
+};
+
+const Blogs: React.FC<BlogsProps> = ({navigation}) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -32,13 +36,13 @@ const Blogs = ({navigation}) => {
 
   const onRefresh = useCallback(() => {
     dispatch<any>(getUserPostsThunk(userData.id));
-  }, []);
+  }, [dispatch, userData?.id]);
 
   useEffect(() => {
     if (Platform.OS === 'android') {
       StatusBar.setBackgroundColor(colors.primary);
     }
-  }, []);
+  }, [colors?.primary]);
 
   useEffect(() => {
     if (userData?.id) {

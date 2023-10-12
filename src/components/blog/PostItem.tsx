@@ -14,16 +14,25 @@ import routes from '../../constants/routes';
 type PostItemProps = {
   title?: string;
   body?: string;
+  id?: number;
 };
 
-const PostItem = ({title, body}: PostItemProps) => {
+const PostItem = ({title, body, id}: PostItemProps) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
 
   return (
     <Pressable
-      onPress={() => navigate(routes.BLOG_DETAIL, {body: body, title: title})}
+      onPress={() =>
+        navigate(routes.BLOG_DETAIL, {
+          item: {
+            body,
+            id,
+            title,
+          },
+        })
+      }
       style={styles.item}>
       <FastImage style={styles.image} source={images.airplane} />
       <CustomSpacer />

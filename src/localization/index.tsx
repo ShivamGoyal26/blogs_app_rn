@@ -20,4 +20,8 @@ export default {
   edit: 'Edit',
   delete: 'Delete',
   logout: 'Logout',
+  title: 'Title',
+  description: 'Description',
+  typeSomething: 'Type Something...',
+  update: 'Update',
 };

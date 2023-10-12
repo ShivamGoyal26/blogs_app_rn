@@ -7,3 +7,4 @@ export {default as CustomDrawerItem} from './CustomDrawerItem';
 export {default as CustomDropDown} from './CustomDropDown';
 export {default as CustomDivider} from './CustomDivider';
 export {default as NotFound} from './NotFound';
+export {default as CustomTextInput} from './CustomTextInput';

@@ -7,6 +7,7 @@ const routes = {
   SPLASH: 'Splash',
   AUTH_STACK: 'AuthStack',
   AUTH_LOADING: 'AuthLoading',
+  EDIT_BLOG: 'EditBlog',
 };
 
 export default routes;

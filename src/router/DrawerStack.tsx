@@ -22,7 +22,6 @@ const DrawerStack = () => {
         drawerStyle: {width: '70%'},
       }}>
       <Drawer.Screen name={routes.BLOGS} component={Blogs} />
-      <Drawer.Screen name={routes.BLOG_DETAIL} component={BlogDetail} />
       <Drawer.Screen
         name={routes.PROFILE_OVERVIEW}
         component={ProfileOverview}
