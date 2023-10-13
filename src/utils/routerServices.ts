@@ -1,3 +1,4 @@
+import {StackActions} from '@react-navigation/native';
 import React from 'react';
 
 export const NavigationRef: any = React.createRef();
@@ -20,5 +21,11 @@ export function resetRoot(rootName: any) {
       index: 0,
       routes: [{name: rootName}],
     });
+  }
+}
+
+export function popToTop() {
+  if (NavigationRef.current) {
+    NavigationRef.current.dispatch(StackActions.popToTop());
   }
 }

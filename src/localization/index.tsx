@@ -24,4 +24,6 @@ export default {
   description: 'Description',
   typeSomething: 'Type Something...',
   update: 'Update',
+  pleaseEnterTitle: 'Please enter the title',
+  pleaseEnterDescription: 'Please enter the Description',
 };

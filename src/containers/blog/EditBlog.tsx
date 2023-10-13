@@ -16,10 +16,14 @@ import {
 import images from '../../constants/images';
 import {goBack} from '../../utils/routerServices';
 import localization from '../../localization';
+import {useDispatch} from 'react-redux';
+import {editPostThunk} from '../../redux/common';
+import {Post} from '../../services/blogs';
+import {showMessage} from 'react-native-flash-message';
 
 type RootStackParamList = {
   BlogDetail: {
-    item: {id: number; title: string; body: string};
+    item: Post;
   };
 };
 
@@ -32,6 +36,7 @@ const EditBlog: React.FC<EditBlogProps> = ({route}: any) => {
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
   const item = route.params.item;
+  const dispatch = useDispatch();
 
   const titleRef: any = useRef(null);
   const titleValueRef: any = useRef(null);
@@ -45,7 +50,16 @@ const EditBlog: React.FC<EditBlogProps> = ({route}: any) => {
     }
   }, [item]);
 
-  const onUpdateButtonPress = () => {};
+  const onUpdateButtonPress = () => {
+    const postData = {
+      title: titleValueRef.current.getValue(),
+      body: bodyValueRef.current.getValue(),
+      id: item.id,
+      userId: item.userId,
+    };
+
+    dispatch<any>(editPostThunk(postData));
+  };
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>

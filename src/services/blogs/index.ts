@@ -2,7 +2,14 @@ import api from '../../api';
 import apiTypes from '../../api/apiTypes';
 import endPoints from '../../api/endPoints';
 
-export const getAllUserPosts = async (userId: any) => {
+export type Post = {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+};
+
+export const getAllUserPosts = async (userId: number) => {
   const res = await api({
     enableLoader: true,
     type: apiTypes.get,
@@ -11,11 +18,20 @@ export const getAllUserPosts = async (userId: any) => {
   return res;
 };
 
-export const getPostDetail = async (postId: any) => {
+export const editBlogPost = async (postId: number, data: Post) => {
   const res = await api({
     enableLoader: true,
-    type: apiTypes.get,
-    url: `${endPoints.GET_USER}/app/posts/${postId}`,
+    type: apiTypes.put,
+    url: `${endPoints.GET_POSTS}/${postId}`,
+    data: data,
+  });
+  return res;
+};
+
+export const deleteBlogPost = async (postId: number) => {
+  const res = await api({
+    type: apiTypes.delete,
+    url: `${endPoints.GET_POSTS}/${postId}`,
   });
   return res;
 };

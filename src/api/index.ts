@@ -1,4 +1,3 @@
-import {Vibration} from 'react-native';
 import axios from 'axios';
 import {showMessage} from 'react-native-flash-message';
 import Config from 'react-native-config';
@@ -101,7 +100,6 @@ const api = async ({
   } catch (error: any) {
     console.log('Error in catch', error.message);
     if (error.message !== 'Cancelled') {
-      Vibration.vibrate();
       showMessage({
         message: error.message,
         type: 'danger',

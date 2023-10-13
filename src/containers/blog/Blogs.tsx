@@ -1,7 +1,6 @@
 import {NavigationProp, useTheme} from '@react-navigation/native';
 import React, {useCallback, useEffect, useMemo} from 'react';
 import {
-  Alert,
   FlatList,
   Platform,
   RefreshControl,
@@ -61,7 +60,7 @@ const Blogs: React.FC<BlogsProps> = ({navigation}) => {
 
         <FlatList
           data={posts}
-          keyExtractor={item => `${item.id}`}
+          keyExtractor={item => `${item.id}${'slslk'}`}
           numColumns={2}
           ListHeaderComponent={CustomSpacer}
           renderItem={({item}) => <PostItem {...item} />}
@@ -93,10 +92,11 @@ const createStyles = (theme: Colors) => {
       color: theme.textColor,
     },
     column: {
-      justifyContent: 'space-evenly',
+      justifyContent: 'space-between',
     },
     flatlist: {
       flexGrow: 1,
+      paddingHorizontal: getScreenHeight(1),
     },
   });
 };

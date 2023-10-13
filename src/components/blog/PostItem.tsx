@@ -1,23 +1,20 @@
 import React, {memo, useMemo} from 'react';
 import {StyleSheet, Text, View, Pressable} from 'react-native';
 import {useTheme} from '@react-navigation/native';
+import dayjs from 'dayjs';
+import FastImage from 'react-native-fast-image';
+
+// Files
 import {Colors} from '../../theme';
 import {getScreenHeight} from '../../utils/commonServices';
 import fonts from '../../constants/fonts';
 import CustomSpacer from '../CustomSpacer';
-import dayjs from 'dayjs';
-import FastImage from 'react-native-fast-image';
 import images from '../../constants/images';
 import {navigate} from '../../utils/routerServices';
 import routes from '../../constants/routes';
+import {Post} from '../../services/blogs';
 
-type PostItemProps = {
-  title?: string;
-  body?: string;
-  id?: number;
-};
-
-const PostItem = ({title, body, id}: PostItemProps) => {
+const PostItem = ({title, body, id, userId}: Post) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -30,6 +27,7 @@ const PostItem = ({title, body, id}: PostItemProps) => {
             body,
             id,
             title,
+            userId,
           },
         })
       }
@@ -41,7 +39,7 @@ const PostItem = ({title, body, id}: PostItemProps) => {
           {title}
         </Text>
         <CustomSpacer height={getScreenHeight(0.5)} />
-        <Text style={styles.subtitle} numberOfLines={4}>
+        <Text style={styles.subtitle} numberOfLines={3}>
           {body}
         </Text>
         <CustomSpacer height={getScreenHeight(0.5)} />
@@ -56,7 +54,7 @@ const PostItem = ({title, body, id}: PostItemProps) => {
 const createStyles = (theme: Colors) =>
   StyleSheet.create({
     item: {
-      width: '46%',
+      width: '49%',
       marginBottom: getScreenHeight(2),
       borderRadius: getScreenHeight(2),
       overflow: 'hidden',

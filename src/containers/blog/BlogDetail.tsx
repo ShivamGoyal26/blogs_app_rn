@@ -1,6 +1,7 @@
 import {RouteProp, useTheme} from '@react-navigation/native';
 import React, {useMemo} from 'react';
 import {
+  Alert,
   ScrollView,
   StyleSheet,
   Text,
@@ -19,10 +20,13 @@ import FastImage from 'react-native-fast-image';
 import localization from '../../localization';
 import {goBack, navigate} from '../../utils/routerServices';
 import routes from '../../constants/routes';
+import {useDispatch} from 'react-redux';
+import {deletePostThunk} from '../../redux/common';
+import {Post} from '../../services/blogs';
 
 type RootStackParamList = {
   BlogDetail: {
-    item: {id: number; title: string; body: string};
+    item: Post;
   };
 };
 
@@ -35,10 +39,24 @@ const BlogDetail: React.FC<BlogDetailProps> = ({route}) => {
   const {colors} = theme;
   const item = route.params.item;
   const styles = useMemo(() => createStyles(colors), [colors]);
+  const dispatch = useDispatch();
 
   const onEditButtonPress = () => {
     navigate(routes.EDIT_BLOG, {item: item});
   };
+
+  const onDeleteButtonPress = () =>
+    Alert.alert('Are you sure?', 'You wanted to delete the blog post!', [
+      {
+        text: 'Cancel',
+        onPress: () => console.log('Cancel Pressed'),
+        style: 'cancel',
+      },
+      {
+        text: 'OK',
+        onPress: () => dispatch<any>(deletePostThunk(item.id)),
+      },
+    ]);
 
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>
@@ -66,7 +84,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({route}) => {
               <TouchableOpacity onPress={onEditButtonPress}>
                 <Text style={styles.title}>{localization.edit}</Text>
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={onDeleteButtonPress}>
                 <Text style={[styles.title, {color: colors.error}]}>
                   {localization.delete}
                 </Text>
