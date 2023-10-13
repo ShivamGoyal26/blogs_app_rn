@@ -14,4 +14,6 @@ export default {
   logo: require('../assets/images/logo.jpeg'),
   back: require('../assets/images/back.png'),
   dummyimage: require('../assets/images/dummyimage.jpeg'),
+  company: require('../assets/images/company.png'),
+  website: require('../assets/images/website.png'),
 };

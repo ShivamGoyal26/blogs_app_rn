@@ -84,7 +84,7 @@ const createStyles = (theme: Colors) =>
       fontFamily: fonts.medium,
       fontSize: fontSize.xl,
       color: theme.textColor,
-      textTransform: 'capitalize',
+      // textTransform: 'capitalize',
       flex: 1,
       textAlign: 'center',
     },

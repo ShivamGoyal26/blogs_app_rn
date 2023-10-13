@@ -7,6 +7,7 @@ export type Post = {
   title: string;
   body: string;
   userId: number;
+  image?: string;
 };
 
 export const getAllUserPosts = async (userId: number) => {

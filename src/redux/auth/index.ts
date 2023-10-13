@@ -7,6 +7,7 @@ import routes from '../../constants/routes';
 import {generateUserID} from '../../utils/commonServices';
 import {resetCommonSlice} from '../common';
 import Spinner from '../../utils/SpinnerRef';
+import users from '../../constants/users';
 
 const initialState = {
   isLoggedIn: false,
@@ -40,9 +41,10 @@ export const getUserThunk = () => {
     Spinner.show();
     const userId = generateUserID();
     const res: any = await getUser(userId);
+    console.log(users[userId]);
     if (res) {
       resetRoot(routes.DRAWER_STACK);
-      dispatch(setUserData(res));
+      dispatch(setUserData({...res, profileImage: users[userId]}));
       dispatch(setIsLoggedIn(true));
     }
     Spinner.hide();

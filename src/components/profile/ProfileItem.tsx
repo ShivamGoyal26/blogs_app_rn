@@ -13,31 +13,61 @@ import CustomButton from '../CustomButton';
 import images from '../../constants/images';
 import {useSelector} from 'react-redux';
 import {fontSize} from '../../theme/text-variants';
+import {navigate} from '../../utils/routerServices';
+import routes from '../../constants/routes';
 
-const ProfileItem = () => {
+type ProfileItemProps = {
+  resetSelectedStatus?: () => void;
+  hide?: boolean;
+  heading?: string;
+  subHeading?: string;
+};
+const ProfileItem = ({
+  resetSelectedStatus,
+  hide,
+  heading,
+  subHeading,
+}: ProfileItemProps) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
   const userData = useSelector((state: any) => state.auth.userData);
 
+  const onClick = () => {
+    if (resetSelectedStatus) {
+      resetSelectedStatus();
+    }
+    navigate(routes.PROFILE_OVERVIEW, {});
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.imageContainer}>
-        <FastImage source={images.profile} style={styles.image} />
+        <FastImage
+          source={{
+            uri: userData?.profileImage,
+          }}
+          style={styles.image}
+        />
       </View>
-      <Text style={styles.title}>{localization.hello}</Text>
+      <Text style={styles.title}>
+        {subHeading ? subHeading : localization.hello}
+      </Text>
       <Text numberOfLines={1} style={styles.subtitle}>
-        {userData?.name}
+        {heading ? heading : userData?.name}
       </Text>
       <CustomSpacer />
 
-      <View style={styles.buttonContainer}>
-        <CustomButton
-          icon={images.metric}
-          height={getScreenHeight(5)}
-          title={localization.liveMetrics}
-        />
-      </View>
+      {hide ? null : (
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            action={onClick}
+            icon={images.metric}
+            height={getScreenHeight(5)}
+            title={localization.liveMetrics}
+          />
+        </View>
+      )}
     </View>
   );
 };
@@ -45,7 +75,6 @@ const ProfileItem = () => {
 const createStyles = (theme: Colors) =>
   StyleSheet.create({
     screen: {
-      flex: 1,
       alignItems: 'center',
     },
     image: {

@@ -18,6 +18,7 @@ import {CustomHeader, CustomSpacer, NotFound} from '../../components';
 import images from '../../constants/images';
 import {getUserPostsThunk} from '../../redux/common';
 import PostItem from '../../components/blog/PostItem';
+import localization from '../../localization';
 
 type BlogsProps = {
   navigation: NavigationProp<{}>; // Replace {} with the correct route param type
@@ -53,9 +54,9 @@ const Blogs: React.FC<BlogsProps> = ({navigation}) => {
     <SafeAreaView edges={['top']} style={styles.safe}>
       <View style={styles.screen}>
         <CustomHeader
-          title="Blogs"
-          rightIcon={images.drawer}
-          rightAction={() => navigation.openDrawer()}
+          title={localization.blogs}
+          leftIcon={images.drawer}
+          leftAction={() => navigation.openDrawer()}
         />
 
         <FlatList

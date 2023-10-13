@@ -34,7 +34,11 @@ const DrawerContent = ({navigation}) => {
       setSelected(item.id);
       return navigation.navigate(item.route);
     }
-    Alert.alert('Working');
+    Alert.alert('Upcoming');
+  };
+
+  const resetSelectedStatus = () => {
+    setSelected('');
   };
 
   return (
@@ -45,7 +49,7 @@ const DrawerContent = ({navigation}) => {
         showsVerticalScrollIndicator={false}
         bounces={false}>
         <CustomSpacer />
-        <ProfileItem />
+        <ProfileItem resetSelectedStatus={resetSelectedStatus} />
         <CustomSpacer height={getScreenHeight(4)} />
 
         <View style={styles.content}>

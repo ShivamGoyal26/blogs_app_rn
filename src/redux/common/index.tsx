@@ -10,6 +10,8 @@ import {showMessage} from 'react-native-flash-message';
 // Files
 import {goBack, popToTop} from '../../utils/routerServices';
 import localization from '../../localization';
+import buildings from '../../constants/buildings';
+import Spinner from '../../utils/SpinnerRef';
 
 const initialState = {
   loading: false,
@@ -35,7 +37,13 @@ export const getUserPostsThunk = (userId: number) => {
     const res: any = await getAllUserPosts(userId);
     if (res) {
       if (res?.length) {
-        dispatch(setPosts(res));
+        const updatedData = res.map((item: Post, index: number) => {
+          return {
+            ...item,
+            image: buildings[index],
+          };
+        });
+        dispatch(setPosts(updatedData));
       }
     }
   };
@@ -43,6 +51,7 @@ export const getUserPostsThunk = (userId: number) => {
 
 export const deletePostThunk = (postId: number) => {
   return async (dispatch: any, getState: any) => {
+    Spinner.show();
     await deleteBlogPost(postId);
     const posts: Post[] = getState().common.posts;
     const updatedPosts = posts.filter(post => post.id !== postId);
@@ -52,10 +61,12 @@ export const deletePostThunk = (postId: number) => {
       message: localization.postDeleted,
       type: 'success',
     });
+    Spinner.hide();
   };
 };
 
-export const editPostThunk = (postData: Post) => {
+export const editPostThunk = (postData: Post, image: string) => {
+  console.log(image);
   return async (dispatch: any, getState: any) => {
     const posts: Post[] = getState().common.posts;
     if (!postData.title) {
@@ -76,7 +87,7 @@ export const editPostThunk = (postData: Post) => {
     if (res) {
       const updatedPosts = posts.map(post => {
         if (post.id === postData.id) {
-          return res;
+          return {...res, image: image};
         }
         return post;
       });

@@ -19,7 +19,6 @@ import localization from '../../localization';
 import {useDispatch} from 'react-redux';
 import {editPostThunk} from '../../redux/common';
 import {Post} from '../../services/blogs';
-import {showMessage} from 'react-native-flash-message';
 
 type RootStackParamList = {
   BlogDetail: {
@@ -58,7 +57,7 @@ const EditBlog: React.FC<EditBlogProps> = ({route}: any) => {
       userId: item.userId,
     };
 
-    dispatch<any>(editPostThunk(postData));
+    dispatch<any>(editPostThunk(postData, item.image));
   };
 
   return (

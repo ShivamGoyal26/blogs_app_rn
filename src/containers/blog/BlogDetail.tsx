@@ -71,7 +71,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({route}) => {
           bounces={false}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}>
-          <FastImage source={images.dummyimage} style={styles.image} />
+          <FastImage source={{uri: item.image}} style={styles.image} />
           <CustomSpacer />
           <View style={styles.content}>
             <Text style={styles.title}>{item.title}</Text>
@@ -118,13 +118,13 @@ const createStyles = (theme: Colors) => {
     title: {
       fontFamily: fonts.medium,
       fontSize: fontSize.xl,
-      textTransform: 'capitalize',
+      // textTransform: 'capitalize',
       color: theme.textColor,
     },
     subtitle: {
       fontFamily: fonts.regular,
       fontSize: fontSize.l,
-      textTransform: 'capitalize',
+      // textTransform: 'capitalize',
       color: theme.grey,
     },
     row: {

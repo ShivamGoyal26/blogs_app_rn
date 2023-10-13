@@ -9,13 +9,12 @@ import {Colors} from '../../theme';
 import {getScreenHeight} from '../../utils/commonServices';
 import fonts from '../../constants/fonts';
 import CustomSpacer from '../CustomSpacer';
-import images from '../../constants/images';
 import {navigate} from '../../utils/routerServices';
 import routes from '../../constants/routes';
 import {Post} from '../../services/blogs';
 import {fontSize} from '../../theme/text-variants';
 
-const PostItem = ({title, body, id, userId}: Post) => {
+const PostItem = ({title, body, id, userId, image}: Post) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
@@ -29,11 +28,17 @@ const PostItem = ({title, body, id, userId}: Post) => {
             id,
             title,
             userId,
+            image,
           },
         })
       }
       style={styles.item}>
-      <FastImage style={styles.image} source={images.dummyimage} />
+      <FastImage
+        style={styles.image}
+        source={{
+          uri: image,
+        }}
+      />
       <CustomSpacer />
       <View style={styles.content}>
         <Text numberOfLines={2} style={styles.title}>

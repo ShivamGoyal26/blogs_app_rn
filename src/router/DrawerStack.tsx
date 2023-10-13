@@ -4,7 +4,6 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 // Files
 import Blogs from '../containers/blog/Blogs';
 import routes from '../constants/routes';
-import BlogDetail from '../containers/blog/BlogDetail';
 import ProfileOverview from '../containers/profile/ProfileOverview';
 import DrawerContent from './DrawerContent';
 
@@ -16,7 +15,7 @@ const DrawerStack = () => {
       initialRouteName={routes.BLOGS}
       drawerContent={props => <DrawerContent {...props} />}
       screenOptions={{
-        drawerPosition: 'right',
+        drawerPosition: 'left',
         drawerType: 'back',
         headerShown: false,
         drawerStyle: {width: '70%'},
