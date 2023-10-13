@@ -20,7 +20,6 @@ export const getAllUserPosts = async (userId: number) => {
 
 export const editBlogPost = async (postId: number, data: Post) => {
   const res = await api({
-    enableLoader: true,
     type: apiTypes.put,
     url: `${endPoints.GET_POSTS}/${postId}`,
     data: data,

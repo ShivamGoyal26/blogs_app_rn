@@ -13,6 +13,7 @@ import images from '../../constants/images';
 import {navigate} from '../../utils/routerServices';
 import routes from '../../constants/routes';
 import {Post} from '../../services/blogs';
+import {fontSize} from '../../theme/text-variants';
 
 const PostItem = ({title, body, id, userId}: Post) => {
   const theme = useTheme();
@@ -32,7 +33,7 @@ const PostItem = ({title, body, id, userId}: Post) => {
         })
       }
       style={styles.item}>
-      <FastImage style={styles.image} source={images.airplane} />
+      <FastImage style={styles.image} source={images.dummyimage} />
       <CustomSpacer />
       <View style={styles.content}>
         <Text numberOfLines={2} style={styles.title}>
@@ -70,17 +71,16 @@ const createStyles = (theme: Colors) =>
     title: {
       fontFamily: fonts.semibold,
       color: theme.textColor,
-      fontSize: getScreenHeight(1.6),
+      fontSize: fontSize.l,
     },
     subtitle: {
       fontFamily: fonts.regular,
       color: theme.grey,
-      fontSize: getScreenHeight(1.3),
-      // textAlign: 'left',
+      fontSize: fontSize.m,
     },
     date: {
       fontFamily: fonts.regular,
-      fontSize: getScreenHeight(1.1),
+      fontSize: fontSize.s,
       textAlign: 'right',
       color: theme.grey,
     },

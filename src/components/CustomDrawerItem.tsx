@@ -7,6 +7,7 @@ import FastImage from 'react-native-fast-image';
 import {Colors} from '../theme';
 import {getScreenHeight} from '../utils/commonServices';
 import fonts from '../constants/fonts';
+import {fontSize, rounded} from '../theme/text-variants';
 
 type CustomDrawerItemProps = {
   title: string;
@@ -60,11 +61,11 @@ const createStyles = (theme: Colors) =>
       flexDirection: 'row',
       alignItems: 'center',
       paddingHorizontal: getScreenHeight(1),
-      borderRadius: getScreenHeight(1),
+      borderRadius: rounded.l,
     },
     title: {
       fontFamily: fonts.regular,
-      fontSize: getScreenHeight(1.7),
+      fontSize: fontSize.l,
       color: theme.grey,
     },
     icon: {

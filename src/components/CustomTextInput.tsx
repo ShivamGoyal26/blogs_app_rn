@@ -12,6 +12,7 @@ import FastImage from 'react-native-fast-image';
 import {getScreenHeight} from '../utils/commonServices';
 import fonts from '../constants/fonts';
 import {useTheme} from '@react-navigation/native';
+import {fontSize, rounded} from '../theme/text-variants';
 
 const CustomTextInput = forwardRef((props: any, ref: any) => {
   const theme = useTheme();
@@ -62,7 +63,7 @@ const CustomTextInput = forwardRef((props: any, ref: any) => {
             onPress={props.leftAction}
             style={styles.iconContanier}>
             <FastImage
-              tintColor={props.leftTint ? props.leftTint : theme.iconColor}
+              tintColor={props.leftTint ? props.leftTint : colors.textColor}
               resizeMode="contain"
               style={styles.icon}
               source={props.leftIcon}
@@ -73,6 +74,7 @@ const CustomTextInput = forwardRef((props: any, ref: any) => {
         )}
         <View style={styles.textInputContanier}>
           <TextInput
+            autoCorrect={true}
             editable={props.editable}
             ref={props.inputRef}
             onSubmitEditing={props.onSubmit}
@@ -113,11 +115,11 @@ const CustomTextInput = forwardRef((props: any, ref: any) => {
               resizeMode="contain"
               style={styles.icon}
               source={props.rightIcon}
-              tintColor={props.rightTint ? props.rightTint : theme.iconColor}
+              tintColor={props.rightTint ? props.rightTint : colors.textColor}
             />
           </TouchableOpacity>
         ) : props.rightLoading ? (
-          <ActivityIndicator size={'small'} color={theme.primaryColor} />
+          <ActivityIndicator size={'small'} color={colors.primary} />
         ) : (
           <View style={{marginRight: getScreenHeight(1)}} />
         )}
@@ -132,9 +134,10 @@ const createStyles = (theme: any) =>
       alignItems: 'center',
       height: '90%',
       fontFamily: fonts.regular,
-      fontSize: getScreenHeight(1.6),
+      fontSize: fontSize.l,
       color: theme.textColor,
       backgroundColor: theme.white,
+      padding: 0,
     },
     mainContainer: {
       flexDirection: 'row',
@@ -142,7 +145,7 @@ const createStyles = (theme: any) =>
       justifyContent: 'space-between',
       borderColor: theme.textColor,
       borderWidth: getScreenHeight(0.2),
-      borderRadius: getScreenHeight(1),
+      borderRadius: rounded.l,
       backgroundColor: theme.white,
     },
     textInputContanier: {
@@ -150,13 +153,13 @@ const createStyles = (theme: any) =>
     },
     label: {
       color: theme.grey,
-      fontSize: getScreenHeight(1.6),
+      fontSize: fontSize.l,
       fontFamily: fonts.medium,
       marginLeft: Platform.OS === 'android' ? getScreenHeight(0.5) : 0,
       marginBottom: getScreenHeight(1),
     },
     input: {
-      fontSize: getScreenHeight(1.5),
+      fontSize: fontSize.l,
       color: theme.textColor,
     },
     iconContanier: {

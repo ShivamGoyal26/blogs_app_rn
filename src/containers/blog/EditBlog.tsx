@@ -82,7 +82,7 @@ const EditBlog: React.FC<EditBlogProps> = ({route}: any) => {
               ref={titleValueRef}
               inputRef={titleRef}
               placeholder={`${localization.typeSomething}`}
-              type="done"
+              type="next"
               maxLength={100}
               star
               onSubmit={() => {

@@ -13,6 +13,7 @@ import {Colors} from '../theme';
 import fonts from '../constants/fonts';
 import FastImage from 'react-native-fast-image';
 import {useSelector} from 'react-redux';
+import {fontSize, rounded} from '../theme/text-variants';
 
 type CustomButtonProps = {
   title: string;
@@ -72,13 +73,13 @@ const createStyles = (theme: Colors) =>
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: theme.primary,
-      borderRadius: getScreenHeight(1),
+      borderRadius: rounded.l,
       flexDirection: 'row',
     },
     title: {
       color: theme.textColor,
       fontFamily: fonts.medium,
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.xl,
     },
     icon: {
       width: getScreenHeight(2.5),

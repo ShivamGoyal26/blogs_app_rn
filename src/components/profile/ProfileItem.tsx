@@ -12,6 +12,7 @@ import CustomSpacer from '../CustomSpacer';
 import CustomButton from '../CustomButton';
 import images from '../../constants/images';
 import {useSelector} from 'react-redux';
+import {fontSize} from '../../theme/text-variants';
 
 const ProfileItem = () => {
   const theme = useTheme();
@@ -63,12 +64,12 @@ const createStyles = (theme: Colors) =>
       fontFamily: fonts.regular,
       color: theme.grey,
       marginTop: getScreenHeight(1),
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.l,
     },
     subtitle: {
       fontFamily: fonts.medium,
       color: theme.textColor,
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.xl,
     },
     divider: {
       width: '100%',

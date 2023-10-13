@@ -1,7 +1,7 @@
 import {ColorValue} from 'react-native';
 
 export type Colors = {
-  backgroundColor: string;
+  backgroundColor: ColorValue;
   textColor: ColorValue;
   primary: ColorValue;
   background: ColorValue;
@@ -13,6 +13,11 @@ export type Colors = {
   error: ColorValue;
 };
 
+export type ColorsProps = {
+  dark: boolean;
+  colors: Colors;
+};
+
 export const platte = {
   white: '#ffffff',
   lightRose: '#f1807e',
@@ -21,7 +26,7 @@ export const platte = {
   lightBlue: '#ADD8E6',
 };
 
-export const DarkTheme = {
+export const DarkTheme: ColorsProps = {
   dark: true,
   colors: {
     backgroundColor: platte.black,
@@ -37,7 +42,7 @@ export const DarkTheme = {
   },
 };
 
-export const LightTheme = {
+export const LightTheme: ColorsProps = {
   dark: false,
   colors: {
     backgroundColor: platte.white,

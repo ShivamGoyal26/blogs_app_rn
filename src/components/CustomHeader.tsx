@@ -7,6 +7,7 @@ import {useTheme} from '@react-navigation/native';
 import fonts from '../constants/fonts';
 import {getScreenHeight} from '../utils/commonServices';
 import {Colors} from '../theme';
+import {fontSize} from '../theme/text-variants';
 
 type CustomHeaderProps = {
   title?: string;
@@ -81,7 +82,7 @@ const createStyles = (theme: Colors) =>
     },
     title: {
       fontFamily: fonts.medium,
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.xl,
       color: theme.textColor,
       textTransform: 'capitalize',
       flex: 1,

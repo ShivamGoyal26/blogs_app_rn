@@ -13,4 +13,5 @@ export default {
   logout: require('../assets/images/logout.png'),
   logo: require('../assets/images/logo.jpeg'),
   back: require('../assets/images/back.png'),
+  dummyimage: require('../assets/images/dummyimage.jpeg'),
 };

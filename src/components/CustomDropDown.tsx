@@ -8,6 +8,7 @@ import {Colors} from '../theme';
 import fonts from '../constants/fonts';
 import FastImage from 'react-native-fast-image';
 import images from '../constants/images';
+import {fontSize} from '../theme/text-variants';
 
 type CustomDropDownProps = {
   title: string;
@@ -67,7 +68,7 @@ const createStyles = (theme: Colors) =>
     title: {
       color: theme.textColor,
       fontFamily: fonts.semibold,
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.xl,
       textTransform: 'uppercase',
     },
     icon: {

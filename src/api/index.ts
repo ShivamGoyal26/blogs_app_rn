@@ -8,8 +8,6 @@ import {store} from '../redux/store';
 import {setLoading} from '../redux/common';
 
 const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
-  console.log(Config.API_URL);
-
   const instance = axios.create({
     baseURL: Config.API_URL,
   });
@@ -30,6 +28,7 @@ const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
       } else {
         request.headers['Content-Type'] = 'application/json';
       }
+      console.log('Rquesting URL', request.url);
       return request;
     },
     error => {

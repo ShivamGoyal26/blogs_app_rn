@@ -67,6 +67,7 @@ export const editPostThunk = (postData: Post) => {
         type: 'danger',
       });
     }
+    dispatch(setLoading(true));
     const res = await editBlogPost(postData.id, postData);
     if (res) {
       const updatedPosts = posts.map(post => {
@@ -78,6 +79,7 @@ export const editPostThunk = (postData: Post) => {
       dispatch(setPosts(updatedPosts));
       popToTop();
     }
+    dispatch(setLoading(false));
   };
 };
 

@@ -23,6 +23,7 @@ import routes from '../../constants/routes';
 import {useDispatch} from 'react-redux';
 import {deletePostThunk} from '../../redux/common';
 import {Post} from '../../services/blogs';
+import {fontSize} from '../../theme/text-variants';
 
 type RootStackParamList = {
   BlogDetail: {
@@ -70,7 +71,7 @@ const BlogDetail: React.FC<BlogDetailProps> = ({route}) => {
           bounces={false}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}>
-          <FastImage source={images.airplane} style={styles.image} />
+          <FastImage source={images.dummyimage} style={styles.image} />
           <CustomSpacer />
           <View style={styles.content}>
             <Text style={styles.title}>{item.title}</Text>
@@ -116,13 +117,13 @@ const createStyles = (theme: Colors) => {
     },
     title: {
       fontFamily: fonts.medium,
-      fontSize: getScreenHeight(1.8),
+      fontSize: fontSize.xl,
       textTransform: 'capitalize',
       color: theme.textColor,
     },
     subtitle: {
       fontFamily: fonts.regular,
-      fontSize: getScreenHeight(1.4),
+      fontSize: fontSize.l,
       textTransform: 'capitalize',
       color: theme.grey,
     },

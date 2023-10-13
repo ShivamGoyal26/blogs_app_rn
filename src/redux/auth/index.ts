@@ -6,6 +6,7 @@ import {resetRoot} from '../../utils/routerServices';
 import routes from '../../constants/routes';
 import {generateUserID} from '../../utils/commonServices';
 import {resetCommonSlice} from '../common';
+import Spinner from '../../utils/SpinnerRef';
 
 const initialState = {
   isLoggedIn: false,
@@ -36,6 +37,7 @@ export const signOutThunk = () => {
 
 export const getUserThunk = () => {
   return async (dispatch: any) => {
+    Spinner.show();
     const userId = generateUserID();
     const res: any = await getUser(userId);
     if (res) {
@@ -43,6 +45,7 @@ export const getUserThunk = () => {
       dispatch(setUserData(res));
       dispatch(setIsLoggedIn(true));
     }
+    Spinner.hide();
   };
 };
 

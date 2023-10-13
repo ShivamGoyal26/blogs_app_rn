@@ -9,14 +9,13 @@ import {
   View,
 } from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 
 // Files
 import {Colors} from '../../theme';
-import fonts from '../../constants/fonts';
 import {getScreenHeight} from '../../utils/commonServices';
 import {CustomHeader, CustomSpacer, NotFound} from '../../components';
 import images from '../../constants/images';
-import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {getUserPostsThunk} from '../../redux/common';
 import PostItem from '../../components/blog/PostItem';
 
@@ -40,6 +39,7 @@ const Blogs: React.FC<BlogsProps> = ({navigation}) => {
   useEffect(() => {
     if (Platform.OS === 'android') {
       StatusBar.setBackgroundColor(colors.primary);
+      StatusBar.setBarStyle('dark-content');
     }
   }, [colors?.primary]);
 
@@ -85,11 +85,6 @@ const createStyles = (theme: Colors) => {
     safe: {
       flex: 1,
       backgroundColor: theme.primary,
-    },
-    title: {
-      fontFamily: fonts.medium,
-      fontSize: getScreenHeight(2),
-      color: theme.textColor,
     },
     column: {
       justifyContent: 'space-between',

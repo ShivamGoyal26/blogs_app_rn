@@ -35,7 +35,7 @@ const MainStack = () => {
         <Stack.Screen
           options={{
             presentation: 'fullScreenModal',
-            animation: 'fade',
+            animation: 'fade_from_bottom',
           }}
           name={routes.BLOG_DETAIL}
           component={BlogDetail}
@@ -44,7 +44,7 @@ const MainStack = () => {
         <Stack.Screen
           options={{
             presentation: 'fullScreenModal',
-            animation: 'fade',
+            animation: 'fade_from_bottom',
           }}
           name={routes.EDIT_BLOG}
           component={EditBlog}
