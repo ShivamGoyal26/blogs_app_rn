@@ -26,4 +26,6 @@ export default {
   update: 'Update',
   pleaseEnterTitle: 'Please enter the title',
   pleaseEnterDescription: 'Please enter the Description',
+  postUpdated: 'Post has been updated successfully',
+  postDeleted: 'Post has been deleted successfully',
 };

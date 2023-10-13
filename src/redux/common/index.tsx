@@ -48,6 +48,10 @@ export const deletePostThunk = (postId: number) => {
     const updatedPosts = posts.filter(post => post.id !== postId);
     dispatch(setPosts(updatedPosts));
     goBack();
+    showMessage({
+      message: localization.postDeleted,
+      type: 'success',
+    });
   };
 };
 
@@ -57,14 +61,14 @@ export const editPostThunk = (postData: Post) => {
     if (!postData.title) {
       return showMessage({
         message: localization.pleaseEnterTitle,
-        type: 'danger',
+        type: 'warning',
       });
     }
 
     if (!postData.body) {
       return showMessage({
         message: localization.pleaseEnterDescription,
-        type: 'danger',
+        type: 'info',
       });
     }
     dispatch(setLoading(true));
@@ -78,6 +82,10 @@ export const editPostThunk = (postData: Post) => {
       });
       dispatch(setPosts(updatedPosts));
       popToTop();
+      showMessage({
+        message: localization.postUpdated,
+        type: 'success',
+      });
     }
     dispatch(setLoading(false));
   };

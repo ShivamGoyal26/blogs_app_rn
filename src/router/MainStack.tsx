@@ -25,7 +25,7 @@ const MainStack = () => {
 
         <Stack.Screen
           options={{
-            presentation: 'fullScreenModal',
+            presentation: 'card',
             animation: 'slide_from_bottom',
           }}
           name={routes.DRAWER_STACK}
@@ -34,7 +34,7 @@ const MainStack = () => {
 
         <Stack.Screen
           options={{
-            presentation: 'fullScreenModal',
+            presentation: 'card',
             animation: 'fade_from_bottom',
           }}
           name={routes.BLOG_DETAIL}
@@ -43,7 +43,7 @@ const MainStack = () => {
 
         <Stack.Screen
           options={{
-            presentation: 'fullScreenModal',
+            presentation: 'card',
             animation: 'fade_from_bottom',
           }}
           name={routes.EDIT_BLOG}

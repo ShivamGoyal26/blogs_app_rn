@@ -18,18 +18,18 @@ const App = () => {
   const colorScheme = useColorScheme();
 
   return (
-    // <SafeAreaProvider>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <NavigationContainer
-          theme={colorScheme === 'light' ? LightTheme : DarkTheme}
-          ref={NavigationRef}>
-          <FlashMessage titleStyle={styles.title} position="top" />
-          <MainStack />
-        </NavigationContainer>
-      </PersistGate>
-    </Provider>
-    // </SafeAreaProvider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          <NavigationContainer
+            theme={colorScheme === 'light' ? LightTheme : DarkTheme}
+            ref={NavigationRef}>
+            <FlashMessage titleStyle={styles.title} position="top" />
+            <MainStack />
+          </NavigationContainer>
+        </PersistGate>
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 
