@@ -1,4 +1,4 @@
-import {NavigationProp, useTheme} from '@react-navigation/native';
+import {useTheme} from '@react-navigation/native';
 import React, {useCallback, useEffect, useMemo} from 'react';
 import {
   FlatList,
@@ -12,16 +12,17 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 
 // Files
-import {Colors} from '../../theme';
 import {getScreenHeight} from '../../utils/commonServices';
 import {CustomHeader, CustomSpacer, NotFound} from '../../components';
 import images from '../../constants/images';
 import {getUserPostsThunk} from '../../redux/common';
 import PostItem from '../../components/blog/PostItem';
 import localization from '../../localization';
+import {DrawerNavigationProp} from '@react-navigation/drawer/lib/typescript/src/types';
+import {Colors} from '../../theme/types';
 
 type BlogsProps = {
-  navigation: NavigationProp<{}>; // Replace {} with the correct route param type
+  navigation: DrawerNavigationProp<{}>;
 };
 
 const Blogs: React.FC<BlogsProps> = ({navigation}) => {
@@ -81,7 +82,7 @@ const createStyles = (theme: Colors) => {
   return StyleSheet.create({
     screen: {
       flex: 1,
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.background,
     },
     safe: {
       flex: 1,

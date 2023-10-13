@@ -11,7 +11,6 @@ import {
 import {SafeAreaView} from 'react-native-safe-area-context';
 
 // Files
-import {Colors} from '../../theme';
 import fonts from '../../constants/fonts';
 import {getScreenHeight} from '../../utils/commonServices';
 import {CustomHeader, CustomSpacer} from '../../components';
@@ -24,6 +23,7 @@ import {useDispatch} from 'react-redux';
 import {deletePostThunk} from '../../redux/common';
 import {Post} from '../../services/blogs';
 import {fontSize} from '../../theme/text-variants';
+import {Colors} from '../../theme/types';
 
 type RootStackParamList = {
   BlogDetail: {

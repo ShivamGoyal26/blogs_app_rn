@@ -6,17 +6,18 @@ import {useDispatch} from 'react-redux';
 import Lottie from 'lottie-react-native';
 
 // Files
-import {Colors} from '../../theme';
 import localization from '../../localization';
 import fonts from '../../constants/fonts';
 import {getScreenHeight} from '../../utils/commonServices';
 import {CustomButton, CustomSpacer} from '../../components';
 import {getUserThunk} from '../../redux/auth';
 import lotties from '../../constants/lotties';
+import {Colors} from '../../theme/types';
 
 const Login = () => {
   const theme = useTheme();
   const {colors} = theme;
+
   const styles = useMemo(() => createStyles(colors), [colors]);
   const dispatch = useDispatch();
 

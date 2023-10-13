@@ -6,20 +6,24 @@ import {useSelector} from 'react-redux';
 import FastImage from 'react-native-fast-image';
 
 // Files
-import {Colors} from '../../theme';
 import {getScreenHeight} from '../../utils/commonServices';
-import {CustomHeader, ProfileItem} from '../../components';
+import {CustomHeader, CustomSpacer, ProfileItem} from '../../components';
 import images from '../../constants/images';
 import fonts from '../../constants/fonts';
 import {fontSize} from '../../theme/text-variants';
+import {Colors} from '../../theme/types';
+import {DrawerNavigationProp} from '@react-navigation/drawer';
 
-const ProfileOverView = ({navigation}) => {
+type ProfileOverViewProps = {
+  navigation: DrawerNavigationProp<{}>;
+};
+
+const ProfileOverView: React.FC<ProfileOverViewProps> = ({navigation}) => {
   const theme = useTheme();
   const {colors} = theme;
   const styles = useMemo(() => createStyles(colors), [colors]);
   const userData = useSelector((state: any) => state.auth.userData);
 
-  console.log(userData);
   return (
     <SafeAreaView edges={['top']} style={styles.safe}>
       <View style={styles.screen}>
@@ -28,6 +32,8 @@ const ProfileOverView = ({navigation}) => {
           leftIcon={images.drawer}
           leftAction={() => navigation.openDrawer()}
         />
+
+        <CustomSpacer />
 
         <ProfileItem
           hide

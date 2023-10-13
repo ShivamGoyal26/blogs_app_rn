@@ -5,7 +5,6 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 // Files
-import {Colors} from '../../theme';
 import {getScreenHeight} from '../../utils/commonServices';
 import {
   CustomButton,
@@ -19,6 +18,7 @@ import localization from '../../localization';
 import {useDispatch} from 'react-redux';
 import {editPostThunk} from '../../redux/common';
 import {Post} from '../../services/blogs';
+import {Colors} from '../../theme/types';
 
 type RootStackParamList = {
   BlogDetail: {

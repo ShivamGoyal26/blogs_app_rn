@@ -66,7 +66,6 @@ export const deletePostThunk = (postId: number) => {
 };
 
 export const editPostThunk = (postData: Post, image: string) => {
-  console.log(image);
   return async (dispatch: any, getState: any) => {
     const posts: Post[] = getState().common.posts;
     if (!postData.title) {

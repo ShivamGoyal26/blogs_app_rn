@@ -8,7 +8,11 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "build-staging": "cp ./.env.staging ./.env && yarn start",
+    "build-production": "cp ./.env.production ./.env && yarn start",
+    "release-staging": "cd android && ENVFILE=.env.staging ./gradlew clean && ./gradlew assembleRelease",
+    "release-prod": "cd android && ENVFILE=.env.production ./gradlew clean && ./gradlew assembleRelease"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.19.3",

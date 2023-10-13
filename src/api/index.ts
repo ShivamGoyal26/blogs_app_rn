@@ -17,6 +17,7 @@ const getInstance = ({hasImage, data, params, extraAdditionToHeader}: any) => {
 
   instance.interceptors.request.use(
     (request: any) => {
+      console.log(Config.API_URL);
       request.data = data;
       request.params = params;
       request.cancelToken = source.token;

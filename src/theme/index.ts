@@ -1,22 +1,4 @@
-import {ColorValue} from 'react-native';
-
-export type Colors = {
-  backgroundColor: ColorValue;
-  textColor: ColorValue;
-  primary: ColorValue;
-  background: ColorValue;
-  card: ColorValue;
-  text: ColorValue;
-  notification: ColorValue;
-  border: ColorValue;
-  grey: ColorValue;
-  error: ColorValue;
-};
-
-export type ColorsProps = {
-  dark: boolean;
-  colors: Colors;
-};
+import {ExtendedTheme, DefaultTheme} from '@react-navigation/native';
 
 export const platte = {
   white: '#ffffff',
@@ -26,13 +8,16 @@ export const platte = {
   lightBlue: '#ADD8E6',
 };
 
-export const DarkTheme: ColorsProps = {
+console.log('DefaultTheme.colors', DefaultTheme.colors);
+
+export const DarkTheme: ExtendedTheme = {
   dark: true,
   colors: {
+    ...DefaultTheme.colors,
     backgroundColor: platte.black,
     textColor: platte.white,
     primary: platte.lightGrey,
-    background: platte.black,
+    background: platte.white,
     card: platte.black,
     text: platte.black,
     notification: platte.black,
@@ -42,9 +27,10 @@ export const DarkTheme: ColorsProps = {
   },
 };
 
-export const LightTheme: ColorsProps = {
+export const LightTheme: ExtendedTheme = {
   dark: false,
   colors: {
+    ...DefaultTheme.colors,
     backgroundColor: platte.white,
     textColor: platte.black,
     primary: platte.lightBlue,

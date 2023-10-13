@@ -1,79 +1,66 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Blog Post App
 
-# Getting Started
+This repository contains a React Native application for a blog post app. The app utilizes various libraries and technologies to enhance functionality and user experience.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Libraries and Technologies Used
 
-## Step 1: Start the Metro Server
+- **Redux Toolkit with Redux Persistor**: Utilized for state management and persisted state across app launches and session store support.
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- **React Navigation (Version 6)**: Integrated for smooth and efficient navigation within the app.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **React Drawer Navigation (Version 6)**: Implemented for a fully customise drawer-style for navigation menu.
 
-```bash
-# using npm
-npm start
+- **Theming Support**: The app supports theming with the ability to switch between dark and light modes. This feature is achieved using React Navigation and the `useColor` hook.
 
-# OR using Yarn
-yarn start
-```
+- **react-native-fast-image**: Employed to cache and load app images faster compared to the native Image component.
 
-## Step 2: Start your Application
+- **react-native-config**: Utilized for environment variable management within the app.
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+- **Axios for API Management**: Axios is used for making HTTP requests to APIs. Interceptors and custom thunk functions are integrated for enhanced API management.
 
-### For Android
+## Installation and Setup
 
-```bash
-# using npm
-npm run android
+1. Clone the repository:
 
-# OR using Yarn
-yarn android
-```
+   ```bash
+   git clone https://github.com/ShivamGoyal26/blogs_app_rn.git
+   cd task_rn
+   ```
 
-### For iOS
+2. Install dependencies:
 
-```bash
-# using npm
-npm run ios
+   ```bash
+   yarn
+   ```
 
-# OR using Yarn
-yarn ios
-```
+3. Configure environment variables:
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+   - Create a `.env` file at the root of the project.
+   - Define the required environment variables in the `.env` file.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+4. Run the app:
+   ```bash
+   npx react-native run-android
+   # or
+   npx react-native run-ios
+   ```
 
-## Step 3: Modifying your App
+## Usage
 
-Now that you have successfully run the app, let's modify it.
+After successfully running the app, you can use and explore the various features such as viewing blog posts, navigating through the app, and switching between light and dark themes.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+## Contributing
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+If you would like to contribute to this project, please follow these steps:
 
-## Congratulations! :tada:
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature/your-feature-name` or `git checkout -b bugfix/your-bug-fix`.
+3. Make your changes and commit them: `git commit -m 'Your commit message here'`.
+4. Push to the forked repository: `git push origin feature/your-feature-name` or `git push origin bugfix/your-bug-fix`.
+5. Create a pull request in the original repository.
 
-You've successfully run and modified your React Native App. :partying_face:
+## License
 
-### Now what?
+This project is licensed under the [MIT License](LICENSE).
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Feel free to reach out if you have any questions or concerns. Happy coding!
