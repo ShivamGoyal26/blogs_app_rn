@@ -24,7 +24,7 @@ This repository contains a React Native application for a blog post app. The app
 
    ```bash
    git clone https://github.com/ShivamGoyal26/blogs_app_rn.git
-   cd task_rn
+   cd blogs_app_rn
    ```
 
 2. Install dependencies:
